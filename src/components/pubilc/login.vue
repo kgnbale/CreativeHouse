@@ -1,5 +1,5 @@
 <template>
-  <div class='login'>
+  <div class='login' ref='login'>
     <div class='account-content'>
       <div class='logo'>
         <p>欢迎回来</p>
@@ -13,34 +13,38 @@
       </div>
       <div class='password-login-info'
            v-if='approach === 1'>
-        <p>
-          <label for="phone">
+        <div style=''>
+         <p style=''>
+          <label for="phone" ref='labelPhone' style='position:relative;top:0px'>
             手机
           </label>
           <select name="phone"
-                  id="">
+                  id='select-phone' ref='selectPhone' style='position:relative;left:0px'>
             <option v-for='(item,index) in countries'
                     :key='index'
                     :selected="item.prefix === '86'"
                     :value='item.name'>+{{item.prefix}}</option>
           </select>
           <input type="text"
-                 id='phone'>
-        </p>
-        <p>
+                 id='phone' @focus='handleFocus' @blur='handleBlur' ref='phoneText' style='position:relative;left:0px'>
+         </p>
+        </div>
+        <div>
           <label for='password'>
             密码
           </label>
           <input type='password'
                  name='password'>
-        </p>
+        </div>
         <div class='forget-password '>忘记密码?</div>
         <div class='login-button'>
           <span>登录</span>
         </div>
       </div>
       <div class='text-login-info'
-           v-else></div>
+           v-else>
+
+           </div>
     </div>
   </div>
 </template>
@@ -60,7 +64,18 @@ export default {
     chooseMethods (value) {
       this.approach = value
     },
+    handleFocus (e) {
+      this.$refs['labelPhone'].style.top = '-20px;'
+      this.$refs['selectPhone'].style.left = '-34px'
+      this.$refs['phoneText'].style.left = '-34px'
+    },
+    handleBlur (e) {
+      this.$refs['labelPhone'].style.top = '0px'
+      this.$refs['selectPhone'].style.left = '0px'
+      this.$refs['phoneText'].style.left = '0px'
+    },
     initCountry () {
+      this.$refs['login'].style.transition = 'all .3s'
       this.countries = [
         {
           name: '美国',
@@ -98,22 +113,26 @@ select {
 }
 .login {
   position: fixed;
-  height: 490px;
-  width: 360px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
-  background: #f8f8f8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:  rgba(0,0,0,0.3);
   .account-content {
     padding: 2.5rem;
+    height: 490px;
+    width: 360px;
+    border-radius: 10px;
+    background: #f8f8f8;
     .logo {
-      p:nth-of-type(1) {
+      div:nth-of-type(1) {
         font-weight: bold;
         font-size: 19px;
       }
-      p:nth-of-type(2) {
+      div:nth-of-type(2) {
         font-size: 12px;
         margin: 0.5rem 0;
       }
@@ -138,7 +157,8 @@ select {
     }
     .password-login-info {
       padding-bottom: 0.3rem;
-      p {
+      padding-top:1rem;
+      div {
         text-align: left;
         color: #999;
         padding-bottom: 0.5rem;

@@ -1,20 +1,23 @@
 <template>
-  <div class='c-works-new'>
-    <div class='big c-work-part'>
-      <c-workbig>
-      </c-workbig>
-      <cWork :image='getRandom'
-             v-if='flag'></cWork>
-      <cWork :image='getRandom'
-             v-if='flag'></cWork>
+  <div class="c-works-new">
+    <div class="big c-work-part">
+      <c-workbig> </c-workbig>
+      <cWork :image="getRandom" v-if="flag"></cWork>
+      <cWork :image="getRandom" v-if="flag"></cWork>
     </div>
-    <div class='c-work-part'
-         v-for='(item,index) in imageList'
-         :key='index'>
-      <cWork v-for='(img,index2) in item'
-             :key='index2'
-             :image='img'
-             @toDetail='toDetail'></cWork>
+    <div
+      class="c-work-part"
+      v-for="(item, index) in imageList"
+      :key="index"
+    >
+      <cWork
+        class=''
+        v-for="(img, index2) in item"
+        :key="index2"
+        :image="img"
+        @toDetail="toDetail"
+
+      ></cWork>
     </div>
   </div>
 </template>

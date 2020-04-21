@@ -13,6 +13,7 @@
          v-for='(item,index) in imageList'
          :key='index'>
       <cWork v-for='(img,index2) in item'
+             class='adaptive-flex'
              :key='index2'
              :image='img'
              @click.native='getDetail(img)'></cWork>
@@ -46,6 +47,9 @@ export default {
         }
         return acc
       }, [])
+      // console.log(this.imageList)
+      // this.imageList[2].pop()
+      // console.log(this.imageList)
       this.$nextTick(() => {
         this.flag = true
         this.getRandom = this.imageList[0][1]
@@ -58,7 +62,6 @@ export default {
   },
   methods: {
     getDetail (item) {
-      console.log(1231)
       this.$router.push({ name: 'detail' })
     }
   }
@@ -69,13 +72,18 @@ export default {
 .c-works {
   width: 80rem;
   margin: 0 auto;
-
   .c-work-part {
     padding-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    .adaptive-flex:last-child:nth-child(4n-1){
+       margin-right:calc(38.5% + 8% /3)
+    }
+    .adaptive-flex:last-child:nth-child(4n-2){
+      margin-right:calc(59% + 8%/3)
+    }
   }
 }
 </style>

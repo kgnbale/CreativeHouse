@@ -1,22 +1,27 @@
 <template>
-  <div class='c-home-page'>
+  <div class="c-home-page">
     <header>
-      <c-header @login='login'
-                @register='register'></c-header>
+      <c-header @login="login"
+                @register="register"
+                ></c-header>
     </header>
-    <div class='c-small-nav'>
-      <div class='small-nav'>
+    <div class="c-small-nav" >
+      <div class="small-nav">
         <ul>
-          <li @click='recommedWork'><span>首页推荐</span></li>
-          <li @click='hotPopular'
-              :class="{'gold':homeIndex === 'hotPage'}"> <span>好评最多</span></li>
-          <li @click='lasetsWork'
-              :class="{'gold':homeIndex === 'newPage'}"><span>最新作品</span></li>
+          <li @click="recommedWork"><span>首页推荐</span></li>
+          <li @click="hotPopular"
+              :class="{ gold: homeIndex === 'hotPage' }">
+            <span>好评最多</span>
+          </li>
+          <li @click="lasetsWork"
+              :class="{ gold: homeIndex === 'newPage' }">
+            <span>最新作品</span>
+          </li>
         </ul>
       </div>
     </div>
-    <router-view></router-view>
-    <Login v-show='showLogin'></Login>
+    <router-view ></router-view>
+    <Login v-show="showLogin"></Login>
   </div>
 </template>
 <script>
@@ -29,11 +34,11 @@ export default {
     return {
       homeIndex: 'first',
       showLogin: false
+
     }
   },
   methods: {
-    recommedWork () {
-    },
+    recommedWork () { },
     hotPopular () {
       console.log('hotPage')
       this.homeIndex = 'hotPage'
@@ -64,6 +69,7 @@ header {
   border-bottom: 1px solid rgb(236, 234, 234);
 }
 .c-home-page {
+  position: relative;
   .c-small-nav {
     width: 100%;
     border-bottom: 1px solid rgb(236, 234, 234);

@@ -17,10 +17,14 @@ export default new Router({
       path: 'new',
       name: 'new',
       component: _ => import('../views/homePage/children/new')
+    }, {
+      path: '/detail',
+      name: 'detail',
+      component: _ => import('../components/pubilc/work-detail')
     }]
   }, {
-    path: '/detail',
-    name: 'detail',
-    component: _ => import('../components/pubilc/work-detail')
+    path: 'trustsql',
+    name: 'trustsql',
+    component: _ => import('../views/trustsql/trustsql.vue')
   }]
 })

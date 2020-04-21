@@ -53,7 +53,14 @@ export default {
 
   },
   methods: {
-    goToNav () { },
+    goToNav (index) {
+      let navigationObj = {
+        '5': this.$router.push({
+          name: 'trustsql'
+        })
+      }
+      return navigationObj[index]
+    },
     onSearch () { },
     login () {
       this.showLogin = true

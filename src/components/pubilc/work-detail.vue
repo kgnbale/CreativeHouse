@@ -1,6 +1,8 @@
 <template>
-  <div class='c-work-detail'>
-    <div class='container'>
+  <div class='c-work-detail'
+       ref='cWorkDetail'>
+    <div class='container'
+         v-show='loading === false'>
       <div class='left-part'>
         <div class='edit-image'
              v-for='(item,index) in authorInfo.imageList'
@@ -54,19 +56,23 @@
         </div>
       </div>
     </div>
+    <loadingPart v-show='loading === true' :loading='loading'></loadingPart>
   </div>
 </template>
 <script>
 import shareMethod from './share-method.vue'
+import loadingPart from './loading.vue'
 
 export default {
   components: {
-    shareMethod
+    shareMethod,
+    loadingPart
   },
   data () {
     return {
       // authorInfo: ;
-      commentNum: 0
+      commentNum: 0,
+      loading: true
     }
   },
   computed: {
@@ -87,14 +93,19 @@ export default {
       obj.work.browseNum = 577
       obj.work.commentNum = 10
       obj.work.createTime = '2020-01-04'
+
       return obj
     }
   },
   created () {
-
   },
   mounted () {
-    console.log(document.getElementsByClassName('left-part'))
+    this.$refs.cWorkDetail.style.height = '104.7vh'
+
+    setTimeout(() => {
+      this.loading = false
+      this.$refs.cWorkDetail.style.height = 'auto'
+    }, 100000)
   },
   methods: {
   }
@@ -109,26 +120,30 @@ button {
 }
 .c-work-detail {
   background: rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+  height: auto;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 100%;
   .container {
-    margin: 5rem 7rem;
+    margin: 5rem 10rem;
     border: 2px solid #ccc;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     border: 5px solid #eee;
-    background: #fff;
     overflow: hidden;
+    background: #fff;
     .left-part {
       display: inline-block;
       width: 80%;
       min-width: 400px;
       .edit-image {
-        padding-top: 3rem;
+        padding-top: 1.5rem;
         width: 100%;
         height: 80vh;
         img {
-          width: 80%;
+          width: 90%;
           height: 100%;
         }
       }
