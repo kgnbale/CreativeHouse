@@ -21,10 +21,10 @@ export default new Router({
       path: '/detail',
       name: 'detail',
       component: _ => import('../components/pubilc/work-detail')
+    }, {
+      path: 'trustsql',
+      name: 'trustsql',
+      component: _ => import('../views/trustsql/trustsql.vue')
     }]
-  }, {
-    path: 'trustsql',
-    name: 'trustsql',
-    component: _ => import('../views/trustsql/trustsql.vue')
   }]
 })

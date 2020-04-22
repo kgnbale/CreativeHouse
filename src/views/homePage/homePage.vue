@@ -5,7 +5,7 @@
                 @register="register"
                 ></c-header>
     </header>
-    <div class="c-small-nav" >
+    <div class="c-small-nav"  v-show='showNav===true'>
       <div class="small-nav">
         <ul>
           <li @click="recommedWork"><span>首页推荐</span></li>
@@ -20,7 +20,7 @@
         </ul>
       </div>
     </div>
-    <router-view ></router-view>
+    <router-view :showNav.sync='showNav' ></router-view>
     <Login v-show="showLogin"></Login>
   </div>
 </template>
@@ -33,7 +33,8 @@ export default {
   data () {
     return {
       homeIndex: 'first',
-      showLogin: false
+      showLogin: false,
+      showNav: true
 
     }
   },
