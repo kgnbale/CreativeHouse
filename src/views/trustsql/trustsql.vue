@@ -10,10 +10,15 @@
           </div>
           <div class='eye-catching'>
             <h2>原创作品版权保护</h2>
-            <div><span>
+            <div>
+              <span>
                 通过区块链技术为你的原创作品提供版权保护服务<br>
                 构建高效智能的区块链版权保护服务生态
-              </span></div>
+              </span>
+            </div>
+          </div>
+          <div class='buttonList'>
+             <div class='upload-'></div>
           </div>
         </div>
         <div class='part-one-right'>
@@ -46,5 +51,14 @@ export default {
 </script>
 
 <style lang="less">
+    .trustsql{
+      main{
+        margin:5rem 10rem;
+        .part-one{
+          .part-one-left{
 
+          }
+        }
+      }
+    }
 </style>
