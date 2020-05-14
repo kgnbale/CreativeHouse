@@ -30,7 +30,9 @@
            </div>
         </div>
       </section>
-      <section class="part-two"></section>
+      <section class="part-two">
+        <LouxItem v-for='n in 10' :key='n' />
+      </section>
       <section class="part-three"></section>
       <section class="part-four"></section>
       <section class="part-five"></section>
@@ -39,26 +41,57 @@
 </template>
 
 <script>
+import LouxItem from './../../components/pubilc/Loux'
+import { debounce } from './../../utils/utils'
 export default {
   name: 'trustsql',
   data () {
     return {
-
+      scrollTop: 0,
+      targetDom: 0
+    }
+  },
+  components: {
+    LouxItem
+  },
+  watch: {
+    scrollTop (newV, oldV) {
+      this.rerender(newV)
     }
   },
   mounted () {
-    //  this.init()
     this.$emit('update:showNav', false)
+    this.getTargetDom('.loux')
+    this.windowAddeventLister()
   },
   methods: {
+    windowAddeventLister () {
+      window.addEventListener('scroll', (e) => {
+        debounce(this.getScrollHeight(e), 5000)
+      }, false)
+    },
+    getTargetDom (target) {
+      this.targetDom = document.querySelector(target)
+    },
+    getScrollHeight (e) {
+      this.scrollTop = parseInt(document.documentElement.scrollTop)
+    },
+    rerender (value) {
+      let offsetTop = this.targetDom.getBoundingClientRect().top
+      console.log(offsetTop)
+      let height = parseInt(window.getComputedStyle(this.targetDom)['height'])
+      let clientHeight = parseInt(document.documentElement.clientHeight)
+      let targetIndex = Math.ceil((clientHeight + value) / height)
+    }
   }
 }
 </script>
 
 <style lang="less">
     .trustsql{
+      background:#F7F7F7;
       main{
-        width:70%;
+        width:1200px;
         margin:0 auto;
         .part-one{
           text-align: left;

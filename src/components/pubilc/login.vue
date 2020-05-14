@@ -15,18 +15,18 @@
            v-if='approach === 1'>
         <div style=''>
          <p style=''>
-          <label for="phone" ref='labelPhone' style='position:relative;top:0px'>
+          <label for="phone" ref='labelPhone' style='display:inline-block;position:relative;top:0px;transition: all .5s;'>
             手机
           </label>
           <select name="phone"
-                  id='select-phone' ref='selectPhone' style='position:relative;left:0px'>
+                  id='select-phone' ref='selectPhone' style='background:none;position:relative;left:0px;transition: all .5s;'>
             <option v-for='(item,index) in countries'
                     :key='index'
                     :selected="item.prefix === '86'"
                     :value='item.name'>+{{item.prefix}}</option>
           </select>
           <input type="text"
-                 id='phone' @focus='handleFocus' @blur='handleBlur' ref='phoneText' style='position:relative;left:0px'>
+                 id='phone' @focus='handleFocus' @blur='handleBlur' ref='phoneText' style='position:relative;left:0px;transition: all .5s;'>
          </p>
         </div>
         <div>
@@ -65,14 +65,21 @@ export default {
       this.approach = value
     },
     handleFocus (e) {
-      this.$refs['labelPhone'].style.top = '-20px;'
-      this.$refs['selectPhone'].style.left = '-34px'
-      this.$refs['phoneText'].style.left = '-34px'
+      // this.$refs['labelPhone'].style.top = '-20px;'
+      // this.$refs['selectPhone'].style.left = '-34px'
+      // this.$refs['phoneText'].style.left = '-34px'
+      this.$refs['labelPhone'].style.transform = 'translate(0,-20px)'
+      this.$refs['selectPhone'].style.transform = 'translate(-34px,-0px)'
+      this.$refs['phoneText'].style.transform = 'translate(-34px,-0px)'
     },
     handleBlur (e) {
-      this.$refs['labelPhone'].style.top = '0px'
-      this.$refs['selectPhone'].style.left = '0px'
-      this.$refs['phoneText'].style.left = '0px'
+      // this.$refs['labelPhone'].style.top = '0px'
+      // this.$refs['selectPhone'].style.left = '0px'
+      // this.$refs['phoneText'].style.left = '0px'
+
+      this.$refs['labelPhone'].style.transform = 'translate(0,0)'
+      this.$refs['selectPhone'].style.transform = 'translate(0,0)'
+      this.$refs['phoneText'].style.transform = 'translate(0,0)'
     },
     initCountry () {
       this.$refs['login'].style.transition = 'all .3s'
