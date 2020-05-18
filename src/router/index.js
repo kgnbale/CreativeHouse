@@ -25,6 +25,11 @@ export default new Router({
       path: 'trustsql',
       name: 'trustsql',
       component: _ => import('../views/trustsql/trustsql.vue')
-    }]
+    }, {
+      path: 'recruit',
+      name: 'recruit',
+      component: _ => import('../views/recruit/recruit.vue')
+    }
+    ]
   }]
 })

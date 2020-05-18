@@ -57,6 +57,9 @@ export default {
       let navigationObj = {
         '5': this.$router.push({
           name: 'trustsql'
+        }),
+        '4': this.$router.push({
+          name: 'recruit'
         })
       }
       return navigationObj[index]
