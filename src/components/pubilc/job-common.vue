@@ -23,11 +23,11 @@
       </div>
       <div class='job-label'>
          <div class='label-content'>
-             <a class='label-item'>交互</a>
-             <a class="label-item">视觉</a>
-             <a class="label-item">多媒体</a>
-             <a class="label-item">UI</a>
-             <a class="label-item">UI开发</a>
+             <a class='label-item' @click='goToRecruitPage("交互")'>交互</a>
+             <a class="label-item" @click='goToRecruitPage("视觉")'>视觉</a>
+             <a class="label-item" @click='goToRecruitPage("多媒体")'>多媒体</a>
+             <a class="label-item" @click='goToRecruitPage("UI")'>UI</a>
+             <a class="label-item" @click='goToRecruitPage("UI开发")'>UI开发</a>
          </div>
       </div>
     </div>
@@ -37,7 +37,18 @@
 export default {
   data () {
     return {}
+  },
+  methods: {
+    goToRecruitPage (keyWord) {
+      this.$router.push({
+        name: 'recruitPage',
+        params: {
+          keyWord
+        }
+      })
+    }
   }
+
 }
 </script>
 <style lang="less" scoped>
@@ -93,6 +104,7 @@ a {
         align-items: center;
         flex-wrap: wrap;
         .label-item{
+          cursor: pointer;
           font-size:12px;
           padding:3px 14px;
           margin:0 4px 14px 4px;

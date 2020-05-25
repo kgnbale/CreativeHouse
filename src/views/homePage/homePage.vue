@@ -5,7 +5,7 @@
                 @register="register"
                 ></c-header>
     </header>
-    <div class="c-small-nav"  v-show='showNav===true'>
+    <!-- <div class="c-small-nav"  v-show='showNav===true'>
       <div class="small-nav">
         <ul>
           <li @click="recommedWork"><span>首页推荐</span></li>
@@ -19,16 +19,17 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <router-view :showNav.sync='showNav' ></router-view>
     <Login v-show="showLogin"></Login>
+    <CFooter></CFooter>
   </div>
 </template>
 <script>
 import cHeader from '../../components/pubilc/c-head.vue'
 import Login from '../../components/pubilc/login.vue'
-// import cWorkbig from '../../components/pubilc/worksBig.vue'
-// import cWork from '../../components/pubilc/works'
+import CFooter from '../../components/pubilc/c-footer'
+
 export default {
   data () {
     return {
@@ -58,7 +59,8 @@ export default {
   },
   components: {
     cHeader,
-    Login
+    Login,
+    CFooter
     // cWorkbig,
     // cWork
   }
@@ -71,6 +73,7 @@ header {
 }
 .c-home-page {
   position: relative;
+  overflow-x: hidden;
   .c-small-nav {
     width: 100%;
     border-bottom: 1px solid rgb(236, 234, 234);

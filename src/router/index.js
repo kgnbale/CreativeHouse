@@ -29,6 +29,11 @@ export default new Router({
       path: 'recruit',
       name: 'recruit',
       component: _ => import('../views/recruit/recruit.vue')
+    },
+    {
+      path: 'recruitPage',
+      name: 'recruitPage',
+      component: _ => import('../views/recruitPage/recruitPage.vue')
     }
     ]
   }]
